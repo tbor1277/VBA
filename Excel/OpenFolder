@@ -1,0 +1,15 @@
+Public Function OpenFolder(str As String) As String
+' command to open folder in file explorer
+' the target folder is in String named "path"
+Dim path As String
+path = str
+
+Set FSO = CreateObject("Scripting.FileSystemObject")
+If FSO.FileExists(path) Then
+    Shell "C:\WINDOWS\explorer.exe """ & path & "", vbNormalFocus
+Else
+    MsgBox "The target file or folder does not exist. Please check the path again.", vbExclamation, "I Cannot Find It!"
+End If
+
+
+End Function
